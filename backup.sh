@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
 # Mincraft backup for a local server. Server dir should be in the parent dir ( ../ )
-# Send Start-up message
-python messagestart.py
+echo "Script starting ..."
+while true
+do 
+    # Send Start-up message
+    python messagestart.py
 
-
-mkdir -p "backup/$(date +%Y-%m-%d-%H)"
-cp -r ../minecraft-server/minecraft-data/ "backup/$(date +%Y-%m-%d-%H)" 
-
-python messageend.py
+    echo "Backup for $(date +%Y-%m-%d-%H) Starting:"
+    mkdir -p "backup/$(date +%Y-%m-%d-%H)"
+    cp -r ../minecraft-server/minecraft-data/ "backup/$(date +%Y-%m-%d-%H)" 
+    echo "Done!"
+    python messageend.py
+    sleep 21600
+done
